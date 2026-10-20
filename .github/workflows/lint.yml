@@ -1,0 +1,11 @@
+name: lint
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  php-lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP lint
+        run: find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
