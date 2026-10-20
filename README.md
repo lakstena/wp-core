@@ -42,7 +42,7 @@ add_filter( 'wp_core_config', static function ( array $c ): array {
 } );
 ```
 
-See `src/Config.php` for every key. Extension filters: `wp_core_organization`, `wp_core_health_checks`, `wp_core_llms_page_args`, `wp_core_llms_pages`, `wp_core_llms_after_pages`, `wp_core_analytics_config`.
+See `src/Config.php` for every key. Extension filters: `wp_core_organization`, `wp_core_health_checks`, `wp_core_llms_page_args`, `wp_core_llms_pages`, `wp_core_llms_after_pages`, `wp_core_llms_lines`, `wp_core_analytics_config`. Config `print_head_meta => false` lets a site print its own description/canonical/Open Graph block.
 
 Markup and cookie names (`lk-consent`, cookie `lk_consent`, `window.lkAnalytics`) keep the group-wide `lk-` prefix.
 

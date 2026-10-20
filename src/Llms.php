@@ -6,7 +6,8 @@ defined( 'ABSPATH' ) || exit;
 /**
  * /llms.txt – summary for AI search (https://llmstxt.org).
  * Content comes from the settings option (name, facts_{lang}) and config `llms`; sites extend the output with filters:
- *  wp_core_llms_page_args (get_posts args), wp_core_llms_pages (WP_Post[]), wp_core_llms_after_pages (string[] lines).
+ *  wp_core_llms_page_args (get_posts args), wp_core_llms_pages (WP_Post[]), wp_core_llms_after_pages (string[] lines),
+ *  wp_core_llms_lines (string[] final lines: a site may replace the whole document).
  */
 final class Llms {
 
@@ -104,7 +105,7 @@ final class Llms {
 				$lines[] = sprintf( '- [%s](%s): %s', $b[0], $b[1], $b[2] );
 			}
 		}
-		return $lines;
+		return (array) apply_filters( 'wp_core_llms_lines', $lines );
 	}
 
 	public static function output(): void {

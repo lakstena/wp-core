@@ -27,6 +27,7 @@ final class Config {
 			'head_comment'     => 'WP Core SEO',
 			'theme_color'      => '#ffffff',
 			'geo_region'       => '',              // e.g. LT-UT; geo meta is printed only when options lat and lng are set
+			'print_head_meta'  => true,            // false: the site prints description/canonical/Open Graph itself (title, robots and sitemap rules stay)
 			'locales'          => array(),         // language slug => og:locale, e.g. array( 'en' => 'en_GB' )
 			'robots_comment'   => 'AI search: allowed',
 			'ai_bots'          => array( 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'Bingbot' ),

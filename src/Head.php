@@ -66,7 +66,7 @@ final class Head {
 	}
 
 	public static function print_meta(): void {
-		if ( self::other_plugin() ) {
+		if ( self::other_plugin() || ! Config::get( 'print_head_meta' ) ) {
 			return;
 		}
 		$id    = is_singular() ? get_queried_object_id() : 0;
