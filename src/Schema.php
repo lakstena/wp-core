@@ -121,11 +121,19 @@ final class Schema {
 		return array( '@type' => 'BreadcrumbList', '@id' => $page_url . '#breadcrumb', 'itemListElement' => $list );
 	}
 
-	/** Prints the <script type="application/ld+json"> block (priority 5 in wp_head, as before). */
+	/** Echoes the <script type="application/ld+json"> block for a graph. */
+	public static function print_now( array $graph ): void {
+		$data = array( '@context' => 'https://schema.org', '@graph' => $graph );
+		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
+	}
+
+	/**
+	 * Prints the graph in wp_head at priority 5. The builder is called at render time. Call from a hook after mu-plugins are loaded,
+	 * or register `add_action( 'wp_head', fn() => Schema::print_now( … ), 5 )` yourself.
+	 */
 	public static function print_graph( callable $graph_builder ): void {
 		add_action( 'wp_head', static function () use ( $graph_builder ) {
-			$data = array( '@context' => 'https://schema.org', '@graph' => $graph_builder() );
-			echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
+			self::print_now( (array) $graph_builder() );
 		}, 5 );
 	}
 }

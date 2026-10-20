@@ -74,7 +74,7 @@ gtag('js',new Date());gtag('config','<?php echo esc_js( $id ); ?>');
 .lk-consent__btns{display:flex;flex-wrap:wrap;gap:8px}
 .lk-consent button{flex:1 1 0;min-width:120px;cursor:pointer;border:2px solid var(--wp--preset--color--accent,#f5b400);border-radius:999px;padding:8px 18px;font:inherit;font-weight:600;background:var(--wp--preset--color--accent,#9c592d);color:#fff}
 </style>
-		<?php
+	<?php
 	}
 
 	public static function enqueue(): void {
@@ -109,6 +109,6 @@ gtag('js',new Date());gtag('config','<?php echo esc_js( $id ); ?>');
 		<button type="button" data-lk-consent="denied"><?php echo esc_html( __( 'Decline', $d ) ); // phpcs:ignore WordPress.WP.I18n ?></button>
 	</div>
 </div>
-		<?php
+	<?php
 	}
 }
